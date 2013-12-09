@@ -1,3 +1,0 @@
-Sceenshot des Tests
-Feature-File
-Ruby-Code
