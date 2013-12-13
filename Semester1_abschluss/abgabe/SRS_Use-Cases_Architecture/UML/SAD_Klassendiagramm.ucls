@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="de.waxmar.bpm.SettingsActivity" project="BPM" 
+    file="/BPM/src/de/waxmar/bpm/SettingsActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="807" y="324"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="de.waxmar.bpm.BasicActivity" project="BPM" 
+    file="/BPM/src/de/waxmar/bpm/BasicActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="458" y="110"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="de.waxmar.bpm.fragments.BasicFragment" project="BPM" 
+    file="/BPM/src/de/waxmar/bpm/fragments/BasicFragment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="437" y="587"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="de.waxmar.bpm.fragments.MetronomeFragment" project="BPM" 
+    file="/BPM/src/de/waxmar/bpm/fragments/MetronomeFragment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="445" y="435"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="de.waxmar.bpm.fragments.PracticeFragment" project="BPM" 
+    file="/BPM/src/de/waxmar/bpm/fragments/PracticeFragment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="746" y="436"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="de.waxmar.bpm.fragments.TunerFragment" project="BPM" 
+    file="/BPM/src/de/waxmar/bpm/fragments/TunerFragment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="148" y="434"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="de.waxmar.bpm.listener.TabListener" project="BPM" 
+    file="/BPM/src/de/waxmar/bpm/listener/TabListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="168" y="102"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="8">    
+    <bendpoint x="-7" y="178"/>    
+    <bendpoint x="-6" y="494"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <dependency id="10">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="12">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="13">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <generalization id="14">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="false" package="true" initial-value="true" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
