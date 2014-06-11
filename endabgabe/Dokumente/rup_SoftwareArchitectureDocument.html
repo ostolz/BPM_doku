@@ -1,0 +1,865 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Software Architecture Document</title>
+<style>
+<!--
+p.MsoNormal,li.MsoNormal,div.MsoNormal {
+	margin: 0in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+h1 {
+	margin-top: 6.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: .5in;
+	text-indent: -.5in;
+	line-height: 12.0pt;
+	page-break-after: avoid;
+	font-size: 12.0pt;
+	font-family: Arial;
+}
+
+h2 {
+	margin-top: 6.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 0in;
+	text-indent: 0in;
+	line-height: 12.0pt;
+	page-break-after: avoid;
+	font-size: 10.0pt;
+	font-family: Arial;
+}
+
+h3 {
+	margin-top: 6.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 0in;
+	text-indent: 0in;
+	line-height: 12.0pt;
+	page-break-after: avoid;
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-weight: normal;
+	font-style: italic;
+}
+
+h4 {
+	margin-top: 6.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: .5in;
+	text-indent: -.5in;
+	line-height: 12.0pt;
+	page-break-after: avoid;
+	font-size: 10.0pt;
+	font-family: Arial;
+	font-weight: normal;
+}
+
+h5 {
+	margin-top: 12.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 2.0in;
+	text-indent: 0in;
+	line-height: 12.0pt;
+	font-size: 11.0pt;
+	font-family: "Times New Roman";
+	font-weight: normal;
+}
+
+h6 {
+	margin-top: 12.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 2.0in;
+	text-indent: 0in;
+	line-height: 12.0pt;
+	font-size: 11.0pt;
+	font-family: "Times New Roman";
+	font-weight: normal;
+	font-style: italic;
+}
+
+p.MsoHeading7,li.MsoHeading7,div.MsoHeading7 {
+	margin-top: 12.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 2.0in;
+	text-indent: 0in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoHeading8,li.MsoHeading8,div.MsoHeading8 {
+	margin-top: 12.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 2.0in;
+	text-indent: 0in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	font-style: italic;
+}
+
+p.MsoHeading9,li.MsoHeading9,div.MsoHeading9 {
+	margin-top: 12.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 2.0in;
+	text-indent: 0in;
+	line-height: 12.0pt;
+	font-size: 9.0pt;
+	font-family: "Times New Roman";
+	font-weight: bold;
+	font-style: italic;
+}
+
+p.MsoToc1,li.MsoToc1,div.MsoToc1 {
+	margin-top: 12.0pt;
+	margin-right: .5in;
+	margin-bottom: 3.0pt;
+	margin-left: 0in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc2,li.MsoToc2,div.MsoToc2 {
+	margin-top: 0in;
+	margin-right: .5in;
+	margin-bottom: 0in;
+	margin-left: .3in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc3,li.MsoToc3,div.MsoToc3 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: .6in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc4,li.MsoToc4,div.MsoToc4 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 30.0pt;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc5,li.MsoToc5,div.MsoToc5 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 40.0pt;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc6,li.MsoToc6,div.MsoToc6 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 50.0pt;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc7,li.MsoToc7,div.MsoToc7 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 60.0pt;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc8,li.MsoToc8,div.MsoToc8 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 70.0pt;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoToc9,li.MsoToc9,div.MsoToc9 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 80.0pt;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoNormalIndent,li.MsoNormalIndent,div.MsoNormalIndent {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 45.0pt;
+	margin-bottom: .0001pt;
+	text-indent: -45.0pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoFootnoteText,li.MsoFootnoteText,div.MsoFootnoteText {
+	margin-top: 2.0pt;
+	margin-right: 0in;
+	margin-bottom: 2.0pt;
+	margin-left: .25in;
+	text-indent: -.25in;
+	line-height: 12.0pt;
+	page-break-after: avoid;
+	border: none;
+	padding: 0in;
+	font-size: 8.0pt;
+	font-family: HELVETICA;
+}
+
+p.MsoHeader,li.MsoHeader,div.MsoHeader {
+	margin: 0in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoFooter,li.MsoFooter,div.MsoFooter {
+	margin: 0in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+span.MsoFootnoteReference {
+	vertical-align: super;
+}
+
+p.MsoTitle,li.MsoTitle,div.MsoTitle {
+	margin: 0in;
+	margin-bottom: .0001pt;
+	text-align: center;
+	font-size: 18.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+p.MsoBodyText,li.MsoBodyText,div.MsoBodyText,dl.MsoBodyText, table.MsoBodyText {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 6.0pt;
+	margin-left: .5in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MsoBodyTextCenter {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 6.0pt;
+	margin-left: .5in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	text-align: center;
+}
+
+p.MsoBodyTextIndent,li.MsoBodyTextIndent,div.MsoBodyTextIndent {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: .5in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	color: blue;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+p.MsoSubtitle,li.MsoSubtitle,div.MsoSubtitle {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 0in;
+	text-align: center;
+	font-size: 18.0pt;
+	font-family: Arial;
+	font-style: italic;
+}
+
+p.MsoBodyText2,li.MsoBodyText2,div.MsoBodyText2 {
+	margin: 0in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	color: blue;
+	font-style: italic;
+}
+
+a:link,span.MsoHyperlink {
+	color: blue;
+	text-decoration: underline;
+}
+
+a:visited,span.MsoHyperlinkFollowed {
+	color: purple;
+	text-decoration: underline;
+}
+
+p.MsoDocumentMap,li.MsoDocumentMap,div.MsoDocumentMap {
+	margin: 0in;
+	margin-bottom: .0001pt;
+	line-height: 12.0pt;
+	background: navy;
+	font-size: 10.0pt;
+	font-family: Tahoma;
+}
+
+p.Paragraph2,li.Paragraph2,div.Paragraph2 {
+	margin-top: 4.0pt;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: .5in;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	color: black;
+}
+
+p.Bullet1,li.Bullet1,div.Bullet1 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: .5in;
+	margin-bottom: .0001pt;
+	text-indent: -.3in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.Bullet2,li.Bullet2,div.Bullet2 {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 1.0in;
+	margin-bottom: .0001pt;
+	text-indent: -.25in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	color: navy;
+}
+
+p.Tabletext,li.Tabletext,div.Tabletext {
+	margin-top: 0in;
+	margin-right: 0in;
+	margin-bottom: 6.0pt;
+	margin-left: 0in;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.MainTitle,li.MainTitle,div.MainTitle {
+	margin-top: 24.0pt;
+	margin-right: 0in;
+	margin-bottom: 3.0pt;
+	margin-left: 0in;
+	text-align: center;
+	font-size: 16.0pt;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+p.Paragraph1,li.Paragraph1,div.Paragraph1 {
+	margin-top: 4.0pt;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 0in;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.Paragraph3,li.Paragraph3,div.Paragraph3 {
+	margin-top: 4.0pt;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 76.5pt;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.Paragraph4,li.Paragraph4,div.Paragraph4 {
+	margin-top: 4.0pt;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 112.5pt;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+}
+
+p.Body,li.Body,div.Body {
+	margin-top: 6.0pt;
+	margin-right: 0in;
+	margin-bottom: 0in;
+	margin-left: 0in;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	font-size: 10.0pt;
+	font-family: "Book Antiqua";
+}
+
+p.Bullet,li.Bullet,div.Bullet {
+	margin-top: 6.0pt;
+	margin-right: .25in;
+	margin-bottom: 0in;
+	margin-left: .5in;
+	margin-bottom: .0001pt;
+	text-align: justify;
+	text-indent: 0in;
+	font-size: 10.0pt;
+	font-family: "Book Antiqua";
+}
+
+p.InfoBlue,li.InfoBlue,div.InfoBlue {
+	margin-top: 12.0pt;
+	margin-right: 0in;
+	margin-bottom: 6.0pt;
+	margin-left: 38.25pt;
+	line-height: 12.0pt;
+	font-size: 10.0pt;
+	font-family: "Times New Roman";
+	color: blue;
+	font-style: italic;
+}
+
+ol {
+	margin-bottom: 0in;
+}
+
+ul {
+	margin-bottom: 0in;
+}
+-->
+</style>
+</head>
+<div class=Section1>
+	<p class=MsoTitle align=right style='text-align: right'>BPM</p>
+	<p class=MsoTitle align=right style='text-align: right'>Software
+		Architecture Document</p>
+	<p class=MsoTitle align=right style='text-align: right'>
+		<span style='font-size: 14.0pt;'>Version 1.0</span>
+	</p>
+	
+</div>
+<div class=Section2>
+	<p class=MsoTitle>Revision History</p>
+	<table border=1 cellspacing=0 cellpadding=0
+		style='border-collapse: collapse; border: none;'>
+		<tr>
+			<td width=154 valign=top
+				style='width: 1.6in; border: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext align=center style='text-align: center'>
+					<b>Date</b>
+				</p>
+			</td>
+			<td width=77 valign=top
+				style='width: .8in; border: solid windowtext .75pt; border-left: none; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext align=center style='text-align: center'>
+					<b>Version</b>
+				</p>
+			</td>
+			<td width=250 valign=top
+				style='width: 2.6in; border: solid windowtext .75pt; border-left: none; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext align=center style='text-align: center'>
+					<b>Description</b>
+				</p>
+			</td>
+			<td width=154 valign=top
+				style='width: 1.6in; border: solid windowtext .75pt; border-left: none; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext align=center style='text-align: center'>
+					<b>Author</b>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width=154 valign=top
+				style='width: 1.6in; border: solid windowtext .75pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext>26/Nov/13</p>
+			</td>
+			<td width=77 valign=top
+				style='width: .8in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext>1.0</p>
+			</td>
+			<td width=250 valign=top
+				style='width: 2.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext>Template angepasst und Text geschrieben</p>
+			</td>
+			<td width=154 valign=top
+				style='width: 1.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>
+				<p class=Tabletext>Benedikt B.</p>
+			</td>
+		</tr>
+		<tr>
+			<td width=154 valign=top
+				style='width: 1.6in; border: solid windowtext .75pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=77 valign=top
+				style='width: .8in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=250 valign=top
+				style='width: 2.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=154 valign=top
+				style='width: 1.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td width=154 valign=top
+				style='width: 1.6in; border: solid windowtext .75pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=77 valign=top
+				style='width: .8in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=250 valign=top
+				style='width: 2.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=154 valign=top
+				style='width: 1.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td width=154 valign=top
+				style='width: 1.6in; border: solid windowtext .75pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=77 valign=top
+				style='width: .8in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=250 valign=top
+				style='width: 2.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+			<td width=154 valign=top
+				style='width: 1.6in; border-top: none; border-left: none; border-bottom: solid windowtext .75pt; border-right: solid windowtext .75pt; padding: 0in 5.4pt 0in 5.4pt'>&nbsp;
+			</td>
+		</tr>
+	</table>
+	<b><span style='font-size: 18.0pt; font-family: Arial;'><br
+			clear=all style='page-break-before: always'> </span></b>
+	<p class=MsoTitle>Table of Contents</p>
+</div>
+<dl>
+	<dt>
+		<div class=MsoToc1>
+			<a href="#1.                  Introduction"">1.<span
+				style='font-size: 12.0pt'> </span>Introduction
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+	</dt>
+	<dd>
+		<div class=MsoToc2>
+			<a href="#1.1               Purpose"">1.1<span
+				style='font-size: 12.0pt'> </span>Purpose
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		<div class=MsoToc2>
+			<a href="#1.2               Scope"">1.2<span
+				style='font-size: 12.0pt'> </span>Scope
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		<div class=MsoToc2>
+			<a href="#1.3               Definitions, Acronyms and Abbreviations"">1.3<span
+				style='font-size: 12.0pt'> </span>Definitions, Acronyms and
+				Abbreviations
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		<div class=MsoToc2>
+			<a href="#1.4               References"">1.4<span
+				style='font-size: 12.0pt'> </span>References
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		<div class=MsoToc2>
+			<a href="#1.5               Overview"">1.5<span
+				style='font-size: 12.0pt'> </span>Overview
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+	</dd>
+</dl>
+<div class=MsoToc1>
+	<p>
+		<a href="#2.                  Architectural Representation"">2.<span
+			style='font-size: 12.0pt'> </span>Architectural Representation
+		</a>
+	</p>
+	<p>
+		<a href="#3.                  Architectural Goals and Constraints"">3.<span
+			style='font-size: 12.0pt'> </span>Architectural Goals and Constraints
+		</a>&nbsp;&nbsp;&nbsp;
+	</p>
+</div>
+<dl>
+	<dt>
+		<div class=MsoToc1>
+			<a href="#4.                  Use-Case View"">4.<span
+				style='font-size: 12.0pt'> </span>Use-Case View
+			</a>
+		</div>
+	</dt>
+	<dd>
+		<div class=MsoToc2>
+			<a href="#4.1               Use-Case Realizations"">4.1<span
+				style='font-size: 12.0pt'> </span>Use-Case Realizations
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+	</dd>
+	<dt>&nbsp;</dt>
+	<dd>
+		<div class=Section2></div>
+	</dd>
+	<dt>
+		<div class=MsoToc1>
+			<a href="#5.                  Logical View"">5.<span
+				style='font-size: 12.0pt'> </span>Logical View
+			</a>
+		</div>
+	</dt>
+	<dd>
+		<div class=MsoToc2>
+			<a href="#5.1               Overview"">5.1<span
+				style='font-size: 12.0pt'> </span>Overview
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		<div class=MsoToc2>
+			<a
+				href="#5.2               Architecturally Significant Design Packages"">5.2<span
+				style='font-size: 12.0pt'> </span>Architecturally Significant Design
+				Packages
+			</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+	</dd>
+</dl>
+<div class=MsoToc1>
+	<p>
+		<a href="#6.                  Process View"">6.<span
+			style='font-size: 12.0pt'> </span>Process View
+		</a>
+	</p>
+	<p>
+		<a href="#7.                  Deployment View"">7.<span
+			style='font-size: 12.0pt'> </span>Deployment View
+		</a>
+	</p>
+</div>
+<div class=MsoToc1>
+	<p>
+		<a href="#8.                  Data View (optional)"">8.<span
+			style='font-size: 12.0pt'> </span>Data View (optional)&nbsp;
+		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</p>
+	<a href="#9.             Quality"">9.<span
+		style='font-size: 12.0pt'> </span>Quality
+	</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<p class=MsoTitle>
+		<br clear=all style='page-break-before: always'> Software
+		Architecture Document
+	</p>
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="1.                  Introduction">1.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Introduction
+		</a></font>
+	</h1>
+	<p class=MsoBodyText>
+		
+	</p>
+	<h2>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="1.1               Purpose">1.1<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Purpose
+		</a></font>
+	</h2>
+	<p class=MsoBodyText>
+	Dieses Dokument  bietet einen umfassenden Überblick über die Architektur des Systems. Dazu werden einige 
+	unterschiedliche Übersichten genutzt, welche unterschiedliche Aspekte des Systems darstellen.
+	Es sollen die signifikantesten Entscheidungen dargestellt werden.
+	</p>
+	
+	<h2>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="1.2               Scope">1.2<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Scope
+		</a></font>
+	</h2>
+	<p class=MsoBodyText>Dieses <i>Software Architecture</i> Dokument bietet einen Überblick  über die Architektur von BPM. BPM wird im Zuge des Kurses <i>Software Engineering</i> entwickelt</p>
+	<h2>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="1.3               Definitions, Acronyms and Abbreviations">1.3<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Definitions, Acronyms and Abbreviations
+		</a></font>
+	</h2>
+	<p class=MsoBodyText>
+		N/A
+	</p>
+	<h2>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="1.4               References">1.4<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>References
+		</a></font>
+	</h2>
+	<ul>
+			<li class="MsoBodyText"><a href="./rup-srs.html">Software Requirement Specification</a></li>
+			<li class="MsoBodyText"><a href="./rup-UC1-customizeA1.html">UC1 CustomizeA1</a></li>
+			<li class="MsoBodyText"><a href="./rup-UC2-tune.html">UC2 Tune</a></li>
+			<li class="MsoBodyText"><a href="./rup-UC3-tuneBySound.html">UC3 TuneBySound</a></li>
+			<li class="MsoBodyText"><a href="./rup-UC4-selectBPM.html">UC4 SelectBPM</a></li>
+			<li class="MsoBodyText"><a href="./rup-UC5-selectBarType.html">UC5 SelectBarType</a></li>
+		</ul>
+
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="2.                  Architectural Representation">2.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Architectural Representation
+		</a> </font>
+	</h1>
+	<p class=MsoBodyText>
+		Dieses Dokument präsentiert die Architektur als eine Folge von Übersichten, logische Übersicht und Deployment Übersicht.
+	</p>
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="3.                  Architectural Goals and Constraints">3.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Architectural Goals and Constraints
+		</a> </font>
+	</h1>
+	<p class=MsoBodyText>Ziele und Vorgaben sind der Software Requirements Specification bzw. den einzelnen Use Cases zu entnehmen.</p>
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="4.                  Use-Case View">4.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Use-Case View
+		</a> </font>
+	</h1>
+	<p class=MsoBodyText>Siehe Software Requirements Specification</p>
+	<h2>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="4.1               Use-Case Realizations">4.1<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Use-Case Realizations
+		</a></font>
+	</h2>
+	<p class=MsoBodyText>Siehe Software Requirements Specification</p>
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="5.                  Logical View">5.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Logical View
+		</a> </font>
+	</h1>
+	<p class=MsoBodyText>Dieser Abschnitt beschreibt die signifikantesten Teile der Software. Wie sie aufgebaut ist.</p>
+	<h2>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="5.1               Overview">5.1<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Overview
+		</a></font>
+	</h2>
+	<p class="MsoBodyTextCenter"><img alt="Übersicht des MVP" src="./img/sad/Model_View_Presenter.png" width = "60%"></p>
+	<h2>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="5.2               Architecturally Significant Design Packages">5.2<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Architecturally Significant Design Packages
+		</a></font>
+	</h2>
+	<p class="MsoBodyTextCenter"><img alt="Übersicht des MVP" src="./img/sad/sad_klassediagramm.gif" width = "60%"></p>
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="6.                  Process View">6.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Process View
+		</a> </font>
+	</h1>
+	<p class=MsoBodyText>N/A</p>
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="7.                  Deployment View">7.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Deployment View
+		</a> </font>
+	</h1>
+	<p class=MsoBodyText>
+		<p class="MsoBodyTextCenter"><img alt="Übersicht des MVP" src="./img/sad/deployment_diagramm.jpg" width = "60%"></p>
+	</p>
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="8.                  Data View (optional)">8.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Data View (optional)
+		</a></font>
+	</h1>
+	<p class=MsoBodyText>Bisher benötigt die Anwendung keine Datenbank.</p>
+	
+	<h1>
+		<font face="Arial, Helvetica, sans-serif"><a
+			name="9.             Quality">9.<span
+				style='font: 7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>Quality
+		</a> </font>
+	</h1>
+	<p class=MsoBodyText>Patterns uns Refactoring sind in den commits des zugehörigen GitHub-Repository vermerkt. <a href="https://github.com/Benedikt1992/BPM">GitHub Repository</a><br></p>
+</div>
+</html>
+

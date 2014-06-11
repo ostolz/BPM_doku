@@ -1,0 +1,10 @@
+##########################
+##	INSTALLATION GUIDE	##
+##########################
+
+1. Man muss die Installation von Apps anderer Quellen (nicht Play-Store) erlauben.
+2. Wie das funktioniert, ist vom Hersteller abhängig (siehe Gebrauchsanweisung).
+3. .apk-Datei auf das Gerät hochladen.
+4. .apk-Datei über den Dateimanager auswählen.
+5. App wird installiert.
+6. App kann nun gestartet werden.
